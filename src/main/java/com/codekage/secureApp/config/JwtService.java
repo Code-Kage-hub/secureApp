@@ -35,9 +35,14 @@ public class JwtService {
                 .compact();
     }
 
-    public String extractUserId(String token) {
+    public String extractUserName(String token) {
         return parseClaims(token).getSubject();
     }
+
+    public String extractRole(String token){
+            return parseClaims(token).get("role",String.class);
+    }
+
 
     public boolean isTokenValid(String token) {
         try {
